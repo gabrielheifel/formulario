@@ -60,7 +60,7 @@ function submitOk() {
   console.log(inputs);
   
   for(let input of inputs) {
-    input.addEventListener("invalid", event => {
+    input.addEventListener("invalid", () => {
       console.log("Campos invalidos");
     })
   }
@@ -68,7 +68,7 @@ function submitOk() {
 
 const form = document.querySelector('form');
 if(form) {
-  form.addEventListener("submit", event => {
+  form.addEventListener("submit", () => {
     alert("Formulário enviado.");
   });
 }
