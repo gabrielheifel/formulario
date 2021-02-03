@@ -1,4 +1,4 @@
-#Formulário
+# Formulário
 
 ### Projeto criado em React
   - Máscara nos inputs de telefone e CEP feita com react-text-mask
