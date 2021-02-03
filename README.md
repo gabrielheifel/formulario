@@ -1,7 +1,7 @@
 # Formulário
 
 ### Projeto criado em React
-  - Máscara nos inputs de telefone e CEP feita com react-text-mask
+  - Máscara nos inputs de telefone e CEP feita com a biblioteca react-text-mask
   - Validação com required no xml e alert confirmando a validação.
   - CEP com autocomplete utilizando a API ViaCEP por meio do axios.
 
