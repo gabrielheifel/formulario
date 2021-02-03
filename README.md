@@ -1,3 +1,10 @@
+#Formulário
+
+### Projeto criado em React
+  - Máscara nos inputs de telefone e CEP feita com react-text-mask
+  - Validação com required no xml e alert confirmando a validação.
+  - CEP com autocomplete utilizando a API ViaCEP por meio do axios.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
