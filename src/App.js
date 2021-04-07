@@ -10,6 +10,7 @@ function limpa_form_cep() {
   document.getElementById('cidade').value = ("");
   document.getElementById('estado').value = ("");
 }
+
 const getAddress = async cep => {
   try {
     const address = (await Axios.get(`https://viacep.com.br/ws/${cep}/json/`)).data;
@@ -30,6 +31,7 @@ const getAddress = async cep => {
     alert('No response.');
   }
 }
+
 function eventCep(event) {
   const valor = (event.target.value);
   const cep = valor.replace(/\D/g, '');
@@ -54,84 +56,73 @@ function eventCep(event) {
   }
 }
 
-function submitOk() {
+function handleChange() {
   const inputs = document.querySelectorAll('[required]');
 
-  console.log(inputs);
-  
   for(let input of inputs) {
-    input.addEventListener("invalid", () => {
-      console.log("Campos invalidos");
-    })
+    if(!input.checkValidity()){
+      input.classList.add('invalid');
+    }else{
+      input.classList.remove('invalid');
+    }
   }
 }
 
-const form = document.querySelector('form');
-if(form) {
-  form.addEventListener("submit", () => {
-    alert("Formulário enviado.");
-  });
+function handleSubmit() {
+  alert("Formulário enviado com sucesso!");
 }
 
 function App() {
   return (
     <div className="App">
-      <form action="." method="get">
-        <fieldset>
+      <form action="." method="get" className="form" onSubmit={handleSubmit} >
+        <fieldset className="container">
           <legend>Formulário</legend>
           <div className="pag1">
-            <label>
-              Nome* <br />
-              <input type="text" id="nome" required autoFocus />
-            </label>
-            <label>
-              E-mail* <br />
-              <input type="email" id="email" required />
-            </label>
-            <label>
-              Telefone* <br />
-              <MaskedInput
-                mask={['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
-                type="tel" id="telefone"
-                required
-              />
-            </label>
-            <label>
-              CEP* <br />
-              <MaskedInput
-                mask={[/[1-9]/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/]}
-                type="tel" id="cep" minLength="8"
-                onBlur={eventCep} required
-              />
-            </label>
-            <label>
-              Logradouro* <br />
-              <input type="text" id="logradouro" required />
-            </label>
+            <label className="nome" htmlFor="nome">Nome* <br/></label>
+            <input type="text" id="nome" required autoFocus />
+
+            <label className="email" htmlFor="email">E-mail* <br/></label>
+            <input type="email" id="email" required />
+
+            <label className="telefone" htmlFor="telefone">Telefone* <br/></label>
+            <MaskedInput
+              mask={['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
+              type="tel" id="telefone"
+              required
+            />
+
+            <label className="cep" htmlFor="cep">CEP* <br/></label>
+            <MaskedInput
+              mask={[/[1-9]/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/]}
+              type="text" id="cep" minLength="8"
+              onBlur={eventCep} required
+            />
+            
+            <label className="logradouro" htmlFor="logradouro">Logradouro* <br/></label>
+            <input type="text" id="logradouro" required />
+
             <p> * Campos obrigatórios.</p>
+
           </div>
           <div className="pag2">
-            <label>
-              Número* <br />
-              <input type="text" id="numero" required />
-            </label>
-            <label>
-              Complemento <br />
-              <input type="text" id="complemento" />
-            </label>
-            <label>
-              Bairro* <br />
-              <input type="text" id="bairro" required />
-            </label>
-            <label>
-              Cidade* <br />
-              <input type="text" id="cidade" required />
-            </label>
-            <label>
-              Estado* <br />
-              <input type="text" id="estado" required />
-            </label>
-            <button type="submit" onClick={submitOk}>Enviar</button>
+            <label className="numero" htmlFor="numero">Número* <br/></label>
+            <input type="text" id="numero" required />
+
+            <label className="complemento" htmlFor="complemento">Complemento <br/></label>
+            <input type="text" id="complemento" />
+
+            <label className="bairro" htmlFor="bairro">Bairro* <br/></label>
+            <input type="text" id="bairro" required />
+
+            <label className="cidade" htmlFor="cidade">Cidade* <br/></label>
+            <input type="text" id="cidade" required />
+
+            <label className="estado" htmlFor="estado">Estado* <br/></label>
+            <input type="text" id="estado" required />
+
+            <button className="enviar" type="submit" onClick={handleChange}>Enviar</button>
+
           </div>
         </fieldset>
       </form>

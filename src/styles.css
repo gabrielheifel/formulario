@@ -7,7 +7,7 @@ body {
   background: #f2f2f2;
 }
 
-form {
+.form {
   width: 98vw;
   height: 98vh;
 
@@ -16,12 +16,12 @@ form {
   align-items: center;
 }
 
-fieldset {
+.container {
   width: 400px;
   background: #fff;
   border-radius: 8px;
 
-  padding: 50px 50px;
+  padding: 20px 50px 50px;
   border-style: none;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.171);
 
@@ -29,7 +29,7 @@ fieldset {
   justify-content: space-between; 
 }
 
-fieldset .pag1, .pag2 {  
+.container .pag1, .pag2 {  
   display: flex;
   flex-direction: column; 
 }
@@ -41,7 +41,7 @@ legend {
 }
 
 label {
-  margin-bottom: 35px;
+  margin-top: 25px;
   font-size: 17px;
 }
 
@@ -52,12 +52,12 @@ input {
   border-bottom: 1px solid #2f2f2f;
 }
 
-fieldset p {
+.container p {
   color: #ff0000e3;
   font-size: 12px;
 }
 
-fieldset button {
+.container button {
   width: 80px;
   align-self: center;
   margin-top: 15px;
@@ -75,17 +75,17 @@ fieldset button {
 
 @media screen and (max-width: 510px) {
 
-  form {
+  .form {
     height: 100%;
     margin-top: 50px;
   }
 
-  fieldset {
+  .container {
     width: 50px;
     flex-direction: column;
   }
 
-  fieldset p {
+  .container p {
     margin-bottom: 35px;
   }
 }
